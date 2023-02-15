@@ -41,7 +41,8 @@ namespace Sudoku.CNN
 
         protected override void InitializePythonComponents()
         {
-            InstallPipModule("z3-solver");
+            //InstallPipModule("z3-solver");
+            InstallPipModule("numpy");
             base.InitializePythonComponents();
         }
 
