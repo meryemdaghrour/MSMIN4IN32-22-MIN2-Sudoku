@@ -1,9 +1,8 @@
-﻿
-namespace Sudoku.Shared
+﻿using Sudoku.Shared;
 
-
+namespace Sudoku.CNN
 {
-    public class EmptySolver : ISudokuSolver
+    public class CNNSolver : ISudokuSolver
     {
         public SudokuGrid Solve(SudokuGrid s)
         {
