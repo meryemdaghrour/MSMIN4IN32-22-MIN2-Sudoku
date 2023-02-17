@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Sudoku.GeneticAlgorithmSolver;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GeneticSharp.Extensions

@@ -25,7 +25,7 @@ namespace GeneticSharp.Extensions
         /// <returns></returns>
         public double Evaluate(IChromosome chromosome)
         {
-            return Evaluate((SudokuCellsChromosome)chromosome);
+            return Evaluate((SudokuChromosomeBase)chromosome);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace GeneticSharp.Extensions
         /// </summary>
         /// <param name="chromosome">a Chromosome that can build Sudokus</param>
         /// <returns>the chromosome's fitness</returns>
-        public double Evaluate(SudokuCellsChromosome chromosome)
+        public double Evaluate(SudokuChromosomeBase chromosome)
         {
             List<double> scores = new List<double>();
 
