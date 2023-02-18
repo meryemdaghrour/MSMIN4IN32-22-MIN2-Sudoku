@@ -12,6 +12,7 @@
 		<ProjectReference Include="..\Norvig\Sudoku.Norvig.csproj" />
 		<ProjectReference Include="..\Sudoku.DlxLib\Sudoku.DlxLib.csproj" />
 		<ProjectReference Include="..\Sudoku.GeneticAlgorithm\Sudoku.GeneticAlgorithm.csproj" />
+		<ProjectReference Include="..\Sudoku.LinQZ3\Sudoku.LinQZ3.csproj" />
 		<ProjectReference Include="..\Sudoku.PSO\Sudoku.PSO.csproj" />
 		<ProjectReference Include="..\Sodoku.GraphColoring\Sodoku.GraphColoring.csproj" />
 		<ProjectReference Include="..\Sudoku.Shared\Sudoku.Shared.csproj" />
