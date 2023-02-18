@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
 	  <OutputType>Library</OutputType>
@@ -6,6 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Sudoku.Z3Solvers.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Z3.Linq" Version="1.0.3" />
