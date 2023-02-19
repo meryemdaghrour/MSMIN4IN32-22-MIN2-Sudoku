@@ -1,7 +1,4 @@
-﻿
-namespace Sudoku.Shared
-
-
+﻿namespace Sudoku.Shared
 {
     public class EmptySolver : ISudokuSolver
     {
