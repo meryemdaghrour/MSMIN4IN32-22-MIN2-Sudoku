@@ -52,9 +52,11 @@ namespace Sudoku.PSO
                 // Evaluate particle fitness in parallel
                 Parallel.For(0, populationSize, i =>
                 {
-                    double[,] matrix = ConvertToMatrix(particles, i);
-                    particleFitness[i] = EvaluateMatrix(matrix);
-                });
+					//double[,] matrix = ConvertToMatrix(particles, i);
+					var currentIndividual = ConvertToVector(particles, i);
+					var currentSudoku = ConvertToSudokuGrid(currentIndividual);
+					particleFitness[i] = currentSudoku.NbErrors(s);
+				});
 
                 // Update global best
                 int bestIndex = GetBestParticleIndex();
@@ -163,7 +165,7 @@ namespace Sudoku.PSO
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    int value = s.GetCell(i, j);
+                    int value = s.Cells[i][j];
                     vector[index] = value;
                     index++;
                 }
@@ -206,7 +208,7 @@ namespace Sudoku.PSO
                 for (int j = 0; j < 9; j++)
                 {
                     int value = (int)Math.Round(vector[index]);
-                    s.SetCell(i, j, value);
+                    s.Cells[i][j]= value;
                     index++;
                 }
             }
@@ -214,19 +216,19 @@ namespace Sudoku.PSO
             return s;
         }
 
-        private double EvaluateMatrix(double[,] matrix)
-        {
-            SudokuGrid s = ConvertToSudokuGrid(matrix);
-            int numErrors = s.CountErrors();
+        //private double EvaluateMatrix(double[,] matrix)
+        //{
+        //    SudokuGrid s = ConvertToSudokuGrid(matrix);
+        //    int numErrors = s.CountErrors();
 
-            if (numErrors == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1.0 / numErrors;
-            }
-        }
+        //    if (numErrors == 0)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return 1.0 / numErrors;
+        //    }
+        //}
     }
 }

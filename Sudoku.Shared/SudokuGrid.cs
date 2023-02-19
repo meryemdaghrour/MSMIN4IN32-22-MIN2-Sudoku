@@ -360,10 +360,5 @@ namespace Sudoku.Shared
         {
             return NbErrors(originalPuzzle) == 0;
         }
-
-        public int GetCell(int i, int j)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
