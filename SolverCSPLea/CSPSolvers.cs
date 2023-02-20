@@ -101,7 +101,8 @@ namespace Sudoku.CSPSolver
         }
     }
 
-    public class CSP5DefaultOrderLCVFCSolver : CSPSolverBase
+    //Celui-ci avait un mauvais nom (AC3 rajouté)
+    public class CSP5DefaultOrderLCVAC3Solver : CSPSolverBase
     {
         protected override SolutionStrategy GetStrategy()
         {
@@ -117,7 +118,25 @@ namespace Sudoku.CSPSolver
         }
     }
 
-    public class CSP6MRVLCVBSSolver : CSPSolverBase
+    //Ce solver était en double, je le hijack pour tester le backtracking simple
+    public class CSP6BacktrackingSolver : CSPSolverBase
+    {
+        protected override SolutionStrategy GetStrategy()
+        {
+            var objStrategyInfo = new CSPStrategyInfo
+            {
+                EnableLCV = true,
+                Inference = CSPInference.ForwardChecking,
+                Selection = CSPSelection.MRVDeg,
+                StrategyType = CSPStrategy.BacktrackingStrategy,
+                MaxSteps = 1000
+			};
+            return objStrategyInfo.GetStrategy();
+        }
+    }
+
+    //A priori le paramètre maxsteps ne concerne que le solver minconflicts
+    public class CSP7MinConflicts10000Solver : CSPSolverBase
     {
         protected override SolutionStrategy GetStrategy()
         {
@@ -128,22 +147,6 @@ namespace Sudoku.CSPSolver
                 Selection = CSPSelection.MRVDeg,
                 StrategyType = CSPStrategy.ImprovedBacktrackingStrategy,
                 MaxSteps = 10000
-            };
-            return objStrategyInfo.GetStrategy();
-        }
-    }
-
-    public class CSP7MRVDegLCVFCStep1000Solver : CSPSolverBase
-    {
-        protected override SolutionStrategy GetStrategy()
-        {
-            var objStrategyInfo = new CSPStrategyInfo
-            {
-                EnableLCV = true,
-                Inference = CSPInference.ForwardChecking,
-                Selection = CSPSelection.MRVDeg,
-                StrategyType = CSPStrategy.ImprovedBacktrackingStrategy,
-                MaxSteps = 1000
             };
             return objStrategyInfo.GetStrategy();
         }
