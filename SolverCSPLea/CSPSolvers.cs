@@ -20,13 +20,14 @@ namespace Sudoku.CSPSolver
         public SudokuGrid Solve(SudokuGrid s)
         {
             //Construction du CSP en utilisant CspHelper
-
+             CSP csp = new CSP();
+             csp = SudokuCSPHelper.GetSudokuCSP(s);
 
             // Utilisation de la stratégie pour résoudre le CSP
-
+            Assignment ass = _Strategy.solve(csp);
 
             //Utilisation de CSPHelper pour traduire l'assignation en SudokuGrid
-
+            SudokuCSPHelper.SetValuesFromAssignment(ass, s);
 
             return s;
         }
