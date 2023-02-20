@@ -16,7 +16,7 @@ namespace Sudoku.CNN
             using (PyModule scope = Py.CreateScope())
             {
 				// On embarque le modèle dans les ressources pour être sûr de maîtriser son emplacement
-				var modelPath = Path.Combine(Environment.CurrentDirectory, @"\sudoku-model.h5");
+				var modelPath = Path.Combine(Environment.CurrentDirectory, @"sudoku-model.h5");
 				if (!File.Exists(modelPath))
 				{
 				   File.WriteAllBytes(modelPath,Resource1.sudoku_model);
