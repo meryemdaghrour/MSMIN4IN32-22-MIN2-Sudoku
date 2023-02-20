@@ -53,6 +53,100 @@ namespace Sudoku.CSPSolver
         }
     }
 
+    public class CSP2MRVDegFCSolver : CSPSolverBase
+    {
+        protected override SolutionStrategy GetStrategy()
+        {
+            var objStrategyInfo = new CSPStrategyInfo
+            {
+                EnableLCV = false,
+                Inference = CSPInference.ForwardChecking,
+                Selection = CSPSelection.MRVDeg,
+                StrategyType = CSPStrategy.ImprovedBacktrackingStrategy,
+                MaxSteps = 5000
+            };
+            return objStrategyInfo.GetStrategy();
+        }
+    }
 
+    public class CSP3MRVDegLCVAC3Solver : CSPSolverBase
+    {
+        protected override SolutionStrategy GetStrategy()
+        {
+            var objStrategyInfo = new CSPStrategyInfo
+            {
+                EnableLCV = true,
+                Inference = CSPInference.AC3,
+                Selection = CSPSelection.MRVDeg,
+                StrategyType = CSPStrategy.ImprovedBacktrackingStrategy,
+                MaxSteps = 5000
+            };
+            return objStrategyInfo.GetStrategy();
+        }
+    }
+
+    public class CSP4MRVLCVFCSolver : CSPSolverBase
+    {
+        protected override SolutionStrategy GetStrategy()
+        {
+            var objStrategyInfo = new CSPStrategyInfo
+            {
+                EnableLCV = true,
+                Inference = CSPInference.ForwardChecking,
+                Selection = CSPSelection.MRV,
+                StrategyType = CSPStrategy.ImprovedBacktrackingStrategy,
+                MaxSteps = 5000
+            };
+            return objStrategyInfo.GetStrategy();
+        }
+    }
+
+    public class CSP5DefaultOrderLCVFCSolver : CSPSolverBase
+    {
+        protected override SolutionStrategy GetStrategy()
+        {
+            var objStrategyInfo = new CSPStrategyInfo
+            {
+                EnableLCV = true,
+                Inference = CSPInference.AC3,
+                Selection = CSPSelection.DefaultOrder,
+                StrategyType = CSPStrategy.ImprovedBacktrackingStrategy,
+                MaxSteps = 1000
+            };
+            return objStrategyInfo.GetStrategy();
+        }
+    }
+
+    public class CSP6MRVLCVBSSolver : CSPSolverBase
+    {
+        protected override SolutionStrategy GetStrategy()
+        {
+            var objStrategyInfo = new CSPStrategyInfo
+            {
+                EnableLCV = true,
+                Inference = CSPInference.ForwardChecking,
+                Selection = CSPSelection.MRVDeg,
+                StrategyType = CSPStrategy.ImprovedBacktrackingStrategy,
+                MaxSteps = 10000
+            };
+            return objStrategyInfo.GetStrategy();
+        }
+    }
+
+    public class CSP7MRVDegLCVFCStep1000Solver : CSPSolverBase
+    {
+        protected override SolutionStrategy GetStrategy()
+        {
+            var objStrategyInfo = new CSPStrategyInfo
+            {
+                EnableLCV = true,
+                Inference = CSPInference.ForwardChecking,
+                Selection = CSPSelection.MRVDeg,
+                StrategyType = CSPStrategy.ImprovedBacktrackingStrategy,
+                MaxSteps = 1000
+            };
+            return objStrategyInfo.GetStrategy();
+        }
+    }
 
 }
