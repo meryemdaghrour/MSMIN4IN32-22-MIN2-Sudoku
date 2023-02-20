@@ -8,7 +8,8 @@
 		<PackageReference Include="BenchmarkDotNet" Version="0.13.5" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\Sudoku.CNN\Sudoku.CNN.csproj" />
+    <ProjectReference Include="..\Norvig2\Sudoku.Norvig2.csproj" />
+    <ProjectReference Include="..\Sudoku.CNN\Sudoku.CNN.csproj" />
 		<ProjectReference Include="..\SolverCSPLea\SolverCSPLea.csproj" />
 		<ProjectReference Include="..\Norvig\Sudoku.Norvig.csproj" />
 		<ProjectReference Include="..\Sudoku.DlxLib\Sudoku.DlxLib.csproj" />
