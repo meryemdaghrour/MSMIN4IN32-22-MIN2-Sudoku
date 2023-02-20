@@ -15,8 +15,20 @@ namespace Sudoku.CNN
             // create a Python scope
             using (PyModule scope = Py.CreateScope())
             {
-                // convert the Person object to a PyObject
-                PyObject pyCells = s.Cells.ToPython();
+				// On embarque le modèle dans les ressources pour être sûr de maîtriser son emplacement
+				var modelPath = Path.Combine(Environment.CurrentDirectory, @"\sudoku-model.h5");
+				if (!File.Exists(modelPath))
+				{
+				   File.WriteAllBytes(modelPath,Resource1.sudoku_model);
+				}
+				//Transformation du chemin du modèle en python
+				PyObject pyModelPath = modelPath.ToPython();
+				//assignation à une variable pour le script
+				scope.Set("load_model_location", pyModelPath);
+
+
+				// convert the Person object to a PyObject
+				PyObject pyCells = s.Cells.ToPython();
 
                 // create a Python variable "person"
                 scope.Set("instance", pyCells);

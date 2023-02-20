@@ -121,4 +121,7 @@
   <data name="cnn_solver.py" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\cnn_solver.py;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="sudoku_model" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\sudoku-model.h5;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

@@ -61,27 +61,41 @@ namespace Sudoku.CNN {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à import z3
-        ///from z3 import *
+        ///   Recherche une chaîne localisée semblable à #! /usr/bin/env python3
         ///
-        ///# 9x9 matrix of integer variables
-        ///X = [ [ Int(&quot;x_%s_%s&quot; % (i+1, j+1)) for j in range(9) ]
-        ///      for i in range(9) ]
+        ///import copy
         ///
-        ///# each cell contains a value in {1, ..., 9}
-        ///cells_c  = [ And(1 &lt;= X[i][j], X[i][j] &lt;= 9)
-        ///             for i in range(9) for j in range(9) ]
+        ///import numpy as np
+        ///from tensorflow import keras
+        ///# from scripts.inference import inference_sudoku, norm
+        ///# from scripts.validate_game import validate_solution
         ///
-        ///# each row contains a digit at most once
-        ///rows_c   = [ Distinct(X[i]) for i in range(9) ]
+        ///# Starting for the Sudoku.Benchmark directory
+        ///load_model_location = &quot;../Sudoku.CNN/Resources/sudoku-model.h5&quot;
         ///
-        ///# each column contains a digit at most once
-        ///cols_c   = [ Distinct([ X[i][j] for i in range(9) ])
-        ///             for j in r [le reste de la chaîne a été tronqué]&quot;;.
+        ///print(f&quot;Chargement du modÃ¨le depuis {load_model_location}&quot;)
+        ///model = keras.models.load_model(load_model_location)
+        ///
+        ///
+        ///def norm(a: np.numarray) -&gt; np.numarray:
+        ///    return (a / 9) - .5
+        ///
+        ///
+        ///de [le reste de la chaîne a été tronqué]&quot;;.
         /// </summary>
         internal static string cnn_solver_py {
             get {
                 return ResourceManager.GetString("cnn_solver.py", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Byte[].
+        /// </summary>
+        internal static byte[] sudoku_model {
+            get {
+                object obj = ResourceManager.GetObject("sudoku_model", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

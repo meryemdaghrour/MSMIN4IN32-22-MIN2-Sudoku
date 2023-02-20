@@ -8,7 +8,7 @@ from tensorflow import keras
 # from scripts.validate_game import validate_solution
 
 # Starting for the Sudoku.Benchmark directory
-load_model_location = "../Sudoku.CNN/Resources/sudoku-model.h5"
+#load_model_location = "../Sudoku.CNN/Resources/sudoku-model.h5"
 
 print(f"Chargement du modèle depuis {load_model_location}")
 model = keras.models.load_model(load_model_location)
