@@ -302,8 +302,21 @@ namespace Sudoku.Shared
                     {
                         try
                         {
+                            
+                            Type[] assemblyTypes;
+
+                            try
+                            {
                             var assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(file);
-                            foreach (var type in assembly.GetTypes())
+								assemblyTypes = assembly.GetTypes();
+                            }
+                            catch
+                            {
+	                            assemblyTypes = new Type[] { };
+
+                            }
+
+                            foreach (var type in assemblyTypes)
                             {
                                 if (typeof(ISudokuSolver).IsAssignableFrom(type) && !(type.IsAbstract) && !(typeof(ISudokuSolver) == type))
                                 {
