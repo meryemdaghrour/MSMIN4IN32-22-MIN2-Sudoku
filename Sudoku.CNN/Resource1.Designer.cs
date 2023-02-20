@@ -79,9 +79,9 @@ namespace Sudoku.CNN {
         ///cols_c   = [ Distinct([ X[i][j] for i in range(9) ])
         ///             for j in r [le reste de la chaîne a été tronqué]&quot;;.
         /// </summary>
-        internal static string Z3Solver_py {
+        internal static string cnn_solver_py {
             get {
-                return ResourceManager.GetString("Z3Solver.py", resourceCulture);
+                return ResourceManager.GetString("cnn_solver.py", resourceCulture);
             }
         }
     }

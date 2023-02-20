@@ -28,7 +28,7 @@ namespace Sudoku.CNN
                 scope.Set("instance", pyCells);
 
                 // the person object may now be used in Python
-                string code = Resource1.Z3Solver_py;
+                string code = Resource1.cnn_solver_py;
                 scope.Exec(code);
                 var result = scope.Get("r");
                 var managedResult = result.As<int[][]>();
@@ -42,7 +42,7 @@ namespace Sudoku.CNN
         protected override void InitializePythonComponents()
         {
             //InstallPipModule("z3-solver");
-            InstallPipModule("numpy");
+            InstallPipModule("tensorflow");
             base.InitializePythonComponents();
         }
 
