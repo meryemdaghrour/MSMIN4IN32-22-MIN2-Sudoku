@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using Sudoku.Shared;
-using System.Runtime.ConstrainedExecution;
-using Iced.Intel;
-using Dia2Lib;
-using System.Numerics;
-using System.Globalization;
+﻿using Sudoku.Shared;
 
 public class SudokuNorvig2 : ISudokuSolver
 {
