@@ -10,7 +10,7 @@ namespace Sudoku.GeneticAlgorithm
         {
             SudokuBoard sudokuToSolve = new SudokuBoard(s);
             var popSize = 100;
-            var maxStagnantGeneration = 50;
+            var maxStagnantGeneration = 20;
             var sudokuWinner = new SudokuBoard();
             var winnerFitness = -200.0;
 
@@ -45,7 +45,7 @@ namespace Sudoku.GeneticAlgorithm
                 ga.TaskExecutor = gaTaskExecutor;
                 ga.OperatorsStrategy = gaOperatorsStrategy;
 
-                Console.WriteLine("Genetic Algorithm running... (popSize = {0})", popSize);
+                Console.WriteLine("Genetic Algorithm running... (population size is {0})", popSize);
                 ga.Start();
 
                 Console.WriteLine("Best solution found has {0} fitness, final generation is {1}.", ga.BestChromosome.Fitness, ga.GenerationsNumber);
@@ -62,7 +62,7 @@ namespace Sudoku.GeneticAlgorithm
                     winnerFitness = (double)currentFitness;
                 }
 
-            } while (chromosomeWinner.Fitness < 0 && popSize < 50000);
+            } while (chromosomeWinner.Fitness < 0 && popSize < 25000);
 
             Console.WriteLine("\nEnd of GA, returning best solution found (with a fitness of {0})\n", winnerFitness);
 
