@@ -45,7 +45,6 @@ namespace Sudoku.PSO
                 ++errors;
             }
           }
-
           return errors;
         }
       }
