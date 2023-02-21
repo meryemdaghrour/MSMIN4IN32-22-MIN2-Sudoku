@@ -2,10 +2,19 @@
 
 namespace Sudoku.GraphColoring2
 {
-    public class SolverGraphColoring2 : ISudokuSolver
+    public class GraphColorationSolverDSatur : ISudokuSolver
     {
         public SudokuGrid Solve(SudokuGrid s)
         {
+
+
+
+
+
+
+
+
+
             return s.CloneSudoku();
         }
     }

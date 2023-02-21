@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 namespace Sodoku.GraphColoring
 {
-    public class ColoratSolionSolver : ISudokuSolver
+    public class GraphColorationSolver : ISudokuSolver
     {
         public SudokuGrid Solve(SudokuGrid s)
         {
