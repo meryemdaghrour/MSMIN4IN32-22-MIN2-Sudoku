@@ -352,5 +352,8 @@ MigrationBackup/
 # Rider working folder
 .idea/
 
-#VSCode working folder
+# VSCode working folder
 .vscode/
+
+# Copy of CNN model
+Sudoku.Benchmark/sudoku-model.h5

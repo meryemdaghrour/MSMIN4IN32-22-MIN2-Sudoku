@@ -69,16 +69,14 @@ def solve_sudoku_np(grid: np.array):
     grid = inference_sudoku(model, grid)
     return grid
 
-
-X = [0]*9
+# Import
+imported = []
 for i in range(9):
-    X[i] = [0]*9
-
-for i in range(9):
+    imported.append([])
     for j in range(9):
-        X[i][j] == instance[i][j]
+        imported[i].append(instance[i][j])
 
-game = np.array(X).reshape((9, 9, 1))
+game = np.array(imported).reshape((9, 9))
 
 game = solve_sudoku_np(game)
 
