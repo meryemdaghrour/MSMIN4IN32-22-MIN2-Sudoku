@@ -1,12 +1,18 @@
 using Sudoku.Shared;
+using System;
+using System.Text;
 
 namespace Sudoku.DlxLib
 {
-    public class DlxLibSolver : ISudokuSolver
+    class DlxLibSolver : ISudokuSolver
     {
         public SudokuGrid Solve(SudokuGrid s)
         {
-            return s.CloneSudoku();
+            DlxSudokuSolver solver = new DlxSudokuSolver();
+            solver.sudoku = s;
+            solver.matrixBuilder();
+            solver.solve();
+            return solver.sudoku;
         }
     }
 }
