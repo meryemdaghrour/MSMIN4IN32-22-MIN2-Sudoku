@@ -6,14 +6,13 @@ namespace Sudoku.DlxLib
 {
     class DlxLibSolver : ISudokuSolver
     {
-
-        private DlxSudokuSolver Solver = new DlxSudokuSolver(); 
         public SudokuGrid Solve(SudokuGrid s)
         {
-            Solver.sudoku = s;
-            Solver.matrixBuilder();
-            Solver.solve();
-            return Solver.sudoku;
+            DlxSudokuSolver solver = new DlxSudokuSolver();
+            solver.sudoku = s;
+            solver.matrixBuilder();
+            solver.solve();
+            return solver.sudoku;
         }
     }
 }

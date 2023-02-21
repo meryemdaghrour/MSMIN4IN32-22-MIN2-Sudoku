@@ -13,7 +13,7 @@ namespace Sudoku.DlxLib
             Solver.sudoku = s;
             Solver.matrixBuilder();
             Solver.solve();
-            return Solver.sudoku;
+            return solver.sudoku;
         }
     }
 }

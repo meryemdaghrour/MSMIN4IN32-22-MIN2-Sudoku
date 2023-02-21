@@ -1,25 +1,24 @@
 using System.Collections.Generic;
 using System.Linq;
-using Sudoku.Shared;
 
-namespace Sudoku.DlxLib
+namespace SudokuIA.DlxLib
 {
     class DlxSudokuSolver
     {
-        public SudokuGrid sudoku; //= new Sudoku();
+        public Sudoku sudoku; //= new Sudoku();
         private int[,] matrix;
         private const int NBCONSTRAIN = 9 * 9 * 4;
 
         private void matrixBuilder()
         {
-            int nbCaseRemplie = sudoku.Cells.Aggregate(0, (acc, x) => acc + x.Aggregate(0, (a, b) => a + ((b == 0) ? 0 : 1)));
+            int nbCaseRemplie = sudoku.getSudoku(null).Aggregate(0, (acc, x) => acc + x.Aggregate(0, (a, b) => a + ((b == 0) ? 0 : 1)));
             matrix = new int[(81-nbCaseRemplie)*9+nbCaseRemplie,NBCONSTRAIN];
             int imatrix = 0;
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    imatrix  = buildLine(i, j, sudoku.Cells[i][j],imatrix);
+                    imatrix  = buildLine(i, j, sudoku.getCaseSudoku(i, j),imatrix);
                 }
             }
         }
@@ -93,7 +92,7 @@ namespace Sudoku.DlxLib
                         break;
                     }
                 }
-                sudoku.Cells[y][x]= nb;
+                sudoku.setCaseSudoku(y, x, nb);
                 //sudoku.setCaseSudoku((nb / 9), (nb % 9), (row % 10) + 1);
             }
         }
@@ -101,9 +100,9 @@ namespace Sudoku.DlxLib
 
         public void Solve()
         {
-            Dlx.MatrixList s = new Dlx.MatrixList(sudoku.Cells.To2D());
+            Dlx.MatrixList s = new Dlx.MatrixList(sudoku.getSudoku(null));
             s.search();
-            sudoku.Cells=(s.convertMatrixSudoku());
+            sudoku.setSudoku(s.convertMatrixSudoku());
         }
     }
 }
