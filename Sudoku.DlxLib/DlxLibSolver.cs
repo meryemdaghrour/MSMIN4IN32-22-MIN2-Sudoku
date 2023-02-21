@@ -8,6 +8,7 @@ namespace Sudoku.DlxLib
     {
 
         private DlxSudokuSolver Solver = new DlxSudokuSolver(); 
+
         public SudokuGrid Solve(SudokuGrid s)
         {
             Solver.sudoku = s;

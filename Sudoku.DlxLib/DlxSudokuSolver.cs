@@ -12,7 +12,7 @@ namespace Sudoku.DlxLib
 
         public void matrixBuilder()
         {
-            int nbCaseRemplie = sudoku.Cells.To2D().Aggregate(0, (acc, x) => acc + x.Aggregate(0, (a, b) => a + ((b == 0) ? 0 : 1)));
+            int nbCaseRemplie = sudoku.Cells.Aggregate(0, (acc, x) => acc + x.Aggregate(0, (a, b) => a + ((b == 0) ? 0 : 1)));
             matrix = new int[(81-nbCaseRemplie)*9+nbCaseRemplie,NBCONSTRAIN];
             int imatrix = 0;
             for (int i = 0; i < 9; i++)
@@ -102,7 +102,7 @@ namespace Sudoku.DlxLib
 
         public void Solve()
         {
-            Dlx.MatrixList s = new Dlx.MatrixList(sudoku.Cells.To2D());
+            Dlx.MatrixList s = new Dlx.MatrixList(sudoku.Cells);
             s.search();
             sudoku.Cells=(s.convertMatrixSudoku());
         }
