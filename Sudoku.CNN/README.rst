@@ -8,6 +8,14 @@ de Sudoku.
 Il est implémenté en Python, qui est exécuté par Pythonnet depuis le code C#.
 La bibliothèque *Tensorflow* est utilisée aux fins du modèle.
 
+Utilisation
+------------
+
+Pour entraîner le modèle, récupérez le jeu de données d'entraînement sur
+Kaggle, puis exécutez le script ``train-model.py``.
+
+Pour résoudre un Sudoku, passez par la classe C# *CNNSolver*.
+
 Architecture
 -------------
 
@@ -42,8 +50,9 @@ Ressources incluses
 	CNNSolver.cs        ← point d'entrée C#
 	README.rst          ← ce document
 	Resources/
-	├ solver.py
-	└ sudoku-model.h5
+	├ solver.py         ← implémentation du solveur en python
+	├ train-model.py    ← script d'entraînement du modèle
+	└ sudoku-model.h5   ← modèle entraîné
 
 Dépendances
 ------------
