@@ -26,7 +26,6 @@ public class SolverPSO : ISudokuSolver
             var sudoku = new Sudoku(CellsSolver);
             var solvedSudoku = solver.Solve(sudoku, numOrganisms, maxEpochs, maxRestarts);
 
-            // ToStringPSO(solvedSudoku);
 
             for(int i=0; i<9; i++){
                 for(int j=0; j<9; j++){
@@ -35,16 +34,5 @@ public class SolverPSO : ISudokuSolver
             }
             return s;
         }
-
-        // public void ToStringPSO(Sudoku s){
-        //     Console.Write("Sudoku be like :");
-        //     int[,] CellsSolver = new int[9,9];
-        //     for(int i=0; i<9; i++){
-        //         Console.Write("\r\n ");
-        //         for(int j=0; j<9; j++){
-        //             Console.Write(s.CellValues[i,j].ToString());
-        //         }
-        //     }
-        // }
 }
 
