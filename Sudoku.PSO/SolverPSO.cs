@@ -7,7 +7,16 @@ public class SolverPSO : ISudokuSolver
     private Random _rnd;
 
     public SudokuGrid Solve(SudokuGrid s)
-    {   
+    {
+        //initialisation
+        const int numOrganisms = 200;
+        const int maxEpochs = 5000;
+        const int maxRestarts = 20;
+        //Affichage des paramètres de base dans la console
+        Console.WriteLine($"Setting numOrganisms: {numOrganisms}");
+        Console.WriteLine($"Setting maxEpochs: {maxEpochs}");
+        Console.WriteLine($"Setting maxRestarts: {maxRestarts}");
+
         //Convertir un SudokuGrid en Sudoku
         int[,] CellsSolver = new int[9,9];
         for(int i=0; i<9; i++){
@@ -16,14 +25,9 @@ public class SolverPSO : ISudokuSolver
             }
         }
 
-        const int numOrganisms = 200;
-        const int maxEpochs = 5000;
-        const int maxRestarts = 20;
-        Console.WriteLine($"Setting numOrganisms: {numOrganisms}");
-        Console.WriteLine($"Setting maxEpochs: {maxEpochs}");
-        Console.WriteLine($"Setting maxRestarts: {maxRestarts}");
-
+        //Création du nouveau Sudoku à partir de SudokuGrid
         var sudoku = new Sudoku(CellsSolver);
+        //Résolution
         var solvedSudoku = Solve(sudoku, numOrganisms, maxEpochs, maxRestarts);
 
         //Convertir un Sudoku en SudokuGrid
@@ -32,6 +36,8 @@ public class SolverPSO : ISudokuSolver
                 s.Cells[i][j] = solvedSudoku.CellValues[i,j];
             }
         }
+
+        //Retour d'un Sudoku au format SudokuGrid
         return s;
     }
 
@@ -40,9 +46,9 @@ public class SolverPSO : ISudokuSolver
         var error = int.MaxValue;
         Sudoku bestSolution = null;
         var attempt = 0;
-        while (error != 0 && attempt < maxRestarts)
+        while (error != 0 && attempt < maxRestarts)//Continuer temps que le nombre d'essais max n'est pas atteint
         {
-            Console.WriteLine($"Attempt: {attempt}");
+            Console.WriteLine($"Attempt: {attempt}");//Affichage du numéro de l'essai dans la console
             _rnd = new Random(attempt);
             bestSolution = SolveInternal(sudoku, numOrganisms, maxEpochs);
             error = bestSolution.Error;
@@ -54,40 +60,41 @@ public class SolverPSO : ISudokuSolver
 
     private Sudoku SolveInternal(Sudoku sudoku, int numOrganisms, int maxEpochs)
     {
+        //Initialisation
         var numberOfWorkers = (int)(numOrganisms * 0.90);
         var hive = new Organism[numOrganisms];
 
         var bestError = int.MaxValue;
         Sudoku bestSolution = null;
 
-        for (var i = 0; i < numOrganisms; ++i)
+        for (var i = 0; i < numOrganisms; ++i)//Pour chaque organisme
         {
             var organismType = i < numberOfWorkers
               ? OrganismType.Worker
               : OrganismType.Explorer;
 
-            var randomSudoku = Sudoku.New(MatrixHelper.RandomMatrix(_rnd, sudoku.CellValues));
-            var err = randomSudoku.Error;
+            var randomSudoku = Sudoku.New(MatrixHelper.RandomMatrix(_rnd, sudoku.CellValues));//Remplis la grille de sudoku de manière aléatoire
+            var err = randomSudoku.Error;//Calcule le nombre d'erreure sur cette grille
 
             hive[i] = new Organism(organismType, randomSudoku.CellValues, err, 0);
 
-            if (err >= bestError) continue;
+            if (err >= bestError) continue;//Si err est supérieur ou égale au meilleur nombre d'erreur continuer sans effectuer les 2 dernières lignes
             bestError = err;
             bestSolution = Sudoku.New(randomSudoku);
         }
 
         var epoch = 0;
-        while (epoch < maxEpochs)
+        while (epoch < maxEpochs)//Temps que l'époque est inferieur à l'époque max
         {
-            if (epoch % 1000 == 0)
+            if (epoch % 1000 == 0)//Toutes les 1000 époque afficher la meilleure erreur
                 Console.WriteLine($"Epoch: {epoch}, Best error: {bestError}");
 
-            if (bestError == 0)
+            if (bestError == 0)//Si l'erreur = 0 tout arreter
                 break;
 
-            for (var i = 0; i < numOrganisms; ++i)
+            for (var i = 0; i < numOrganisms; ++i) //Pour chaque organisme
             {
-                if (hive[i].Type == OrganismType.Worker)
+                if (hive[i].Type == OrganismType.Worker)//Si l'organisme est un worker
                 {
                     var neighbor = MatrixHelper.NeighborMatrix(_rnd, sudoku.CellValues, hive[i].Matrix);
                     var neighborSudoku = Sudoku.New(neighbor);
@@ -112,7 +119,7 @@ public class SolverPSO : ISudokuSolver
                         hive[i] = new Organism(0, randomSudoku.CellValues, randomSudoku.Error, 0);
                     }
                 }
-                else
+                else//Si l'organism est un Explorer
                 {
                     var randomSudoku = Sudoku.New(MatrixHelper.RandomMatrix(_rnd, sudoku.CellValues));
                     hive[i].Matrix = MatrixHelper.DuplicateMatrix(randomSudoku.CellValues);
