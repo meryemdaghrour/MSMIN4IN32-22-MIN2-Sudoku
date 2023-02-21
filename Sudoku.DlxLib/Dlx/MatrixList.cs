@@ -265,6 +265,9 @@ namespace Dlx
         }
 
         private void search(int k)
+    // Q: What does this function return?
+    // A: It returns a list of rows that satisfy the constraints.
+    
         {
             if (root.right == root)
             {

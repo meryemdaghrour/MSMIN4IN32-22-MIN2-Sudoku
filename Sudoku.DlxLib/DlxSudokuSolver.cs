@@ -10,9 +10,9 @@ namespace Sudoku.DlxLib
         private int[,] matrix;
         private const int NBCONSTRAIN = 9 * 9 * 4;
 
-        private void matrixBuilder()
+        public void matrixBuilder()
         {
-            int nbCaseRemplie = sudoku.Cells.Aggregate(0, (acc, x) => acc + x.Aggregate(0, (a, b) => a + ((b == 0) ? 0 : 1)));
+            int nbCaseRemplie = sudoku.Cells.To2D().Aggregate(0, (acc, x) => acc + x.Aggregate(0, (a, b) => a + ((b == 0) ? 0 : 1)));
             matrix = new int[(81-nbCaseRemplie)*9+nbCaseRemplie,NBCONSTRAIN];
             int imatrix = 0;
             for (int i = 0; i < 9; i++)
@@ -23,6 +23,7 @@ namespace Sudoku.DlxLib
                 }
             }
         }
+
 
         private int buildLine(int i, int j, int value, int imatrix)
         {
