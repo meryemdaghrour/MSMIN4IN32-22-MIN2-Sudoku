@@ -1,3 +1,8 @@
+Bienvenue sur le dépôt du groupe MIN2 composé par Guillaume BODARD, Maxence DUMONTIER et Clément GANDILLON
+
+Sujet J: Coloration de graphe
+
+
 ## Contexte
 L'objectif a été de résoudre un sudoku à l'aide d'une intelligence artificielle. En effet, nous avions disposition plusieurs méthodes pour notre problème. Nous pouvons citer les algorithmes génétiques, les résolution "à la Norvig" ou bien à l'aide d'un réseau de neurones.  Nous avons opter la coloration de graphe.
 
