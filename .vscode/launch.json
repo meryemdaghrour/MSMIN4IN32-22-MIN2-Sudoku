@@ -15,7 +15,9 @@
             "cwd": "${workspaceFolder}/Sudoku.Benchmark",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            // Disable 'just my code' option for debugging
+            "justMyCode": false
         },
         {
             "name": ".NET Core Attach",
