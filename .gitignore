@@ -354,3 +354,7 @@ MigrationBackup/
 
 #VSCode working folder
 .vscode/
+
+# Local History for Visual Studio
+.history/
+.localhistory/
