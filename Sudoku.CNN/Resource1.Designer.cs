@@ -71,7 +71,7 @@ namespace Sudoku.CNN {
         ///# from scripts.validate_game import validate_solution
         ///
         ///# Starting for the Sudoku.Benchmark directory
-        ///load_model_location = &quot;../Sudoku.CNN/Resources/sudoku-model.h5&quot;
+        ///#load_model_location = &quot;../Sudoku.CNN/Resources/sudoku-model.h5&quot;
         ///
         ///print(f&quot;Chargement du modÃ¨le depuis {load_model_location}&quot;)
         ///model = keras.models.load_model(load_model_location)
@@ -81,7 +81,7 @@ namespace Sudoku.CNN {
         ///    return (a / 9) - .5
         ///
         ///
-        ///de [le reste de la chaîne a été tronqué]&quot;;.
+        ///d [le reste de la chaîne a été tronqué]&quot;;.
         /// </summary>
         internal static string cnn_solver_py {
             get {
