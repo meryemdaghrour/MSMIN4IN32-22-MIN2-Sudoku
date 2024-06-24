@@ -351,3 +351,13 @@ MigrationBackup/
 
 # Rider working folder
 .idea/
+
+# VSCode working folder
+.vscode/
+
+# Local History for Visual Studio
+.history/
+.localhistory/
+
+# Copy of CNN model
+Sudoku.Benchmark/sudoku-model.h5

@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <PackageReference Include="pythonnet" Version="3.1.0-preview2023-01-03" />
+    <PackageReference Include="pythonnet" Version="3.1.0-preview2023-02-03" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sudoku.Shared\Sudoku.Shared.csproj" />
